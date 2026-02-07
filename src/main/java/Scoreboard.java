@@ -23,4 +23,11 @@ public class Scoreboard {
     private String key(String h, String a) {
         return h + "-" + a;
     }
+    public void updateScore(String home, String away, int homeScore, int awayScore) {
+        String key = key(home, away);
+        Match existing = matches.get(key);
+        existing.setHomeTeamScore(homeScore);
+        existing.setAwayTeamScore(awayScore);
+        matches.put(key, existing);
+    }
 }

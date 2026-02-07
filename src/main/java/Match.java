@@ -16,4 +16,12 @@ public class Match {
     public MatchSummary toSummary() {
         return new MatchSummary(home, away, homeScore, awayScore);
     }
+
+    public void setHomeTeamScore(int newScore){
+        this.homeScore=newScore;
+    }
+
+    public void setAwayTeamScore(int newScore){
+        this.awayScore=newScore;
+    }
 }
