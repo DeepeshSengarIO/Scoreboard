@@ -1,3 +1,9 @@
+/**
+ * Internal domain entity representing an ongoing football match.
+ *
+ * This class is intentionally mutable and not exposed outside the
+ * scoreboard to preserve encapsulation.
+ */
 public class Match {
     private final String home;
     private final String away;
