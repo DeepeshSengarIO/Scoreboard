@@ -47,4 +47,21 @@ public class ScoreboardTest {
         assertEquals("Spain", summary.get(0).homeTeam());
         assertEquals("Mexico", summary.get(1).homeTeam());
     }
+
+    @Test
+    void sameScoreOrderedByMostRecentStartTime() {
+        Scoreboard scoreboard = new Scoreboard();
+
+        scoreboard.startGame("Spain", "Brazil", 900);
+        scoreboard.startGame("Mexico", "Canada", 915);
+        scoreboard.startGame("Japan", "Uruguay", 930);
+
+        scoreboard.updateScore("Spain", "Brazil", 3, 2);
+        scoreboard.updateScore("Mexico", "Canada", 2, 3);
+        scoreboard.updateScore("Japan", "Uruguay", 2, 3);
+
+        List<MatchSummary> summary = scoreboard.getSummary();
+
+        assertEquals("Japan", summary.get(0).homeTeam());
+    }
 }
