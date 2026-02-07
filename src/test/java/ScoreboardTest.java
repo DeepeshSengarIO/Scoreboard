@@ -64,4 +64,12 @@ public class ScoreboardTest {
 
         assertEquals("Japan", summary.get(0).homeTeam());
     }
+
+    @Test
+    void finishedGameIsRemoved() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startGame("Spain", "Brazil", 900);
+        scoreboard.finishGame("Spain", "Brazil");
+        assertTrue(scoreboard.getSummary().isEmpty());
+    }
 }
