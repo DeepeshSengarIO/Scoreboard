@@ -9,7 +9,12 @@ public class Scoreboard {
     }
     public List<MatchSummary> getSummary(){
         List<Match> ordered = new ArrayList<>(matches.values());
-        ordered.sort((p1, p2)->Integer.compare(p2.totalScore(), p1.totalScore())); // sort by descending of total score
+        ordered.sort((p1, p2)->{
+                    int sumCompare = Integer.compare(p2.totalScore(), p1.totalScore()); // by descending order of total score
+                    if (sumCompare!=0) return sumCompare;
+                    return Integer.compare(p2.getStartTime(), p1.getStartTime()); // further compare by startTime
+                }
+        );
         List<MatchSummary> result = new ArrayList<>();
         for (Match match : ordered) {
             result.add(match.toSummary());
