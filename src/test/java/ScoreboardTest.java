@@ -2,8 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ScoreboardTest {
     @Test
@@ -95,5 +94,28 @@ public class ScoreboardTest {
         assertEquals("Mexico", summary.get(2).homeTeam());
         assertEquals("Argentina", summary.get(3).homeTeam());
         assertEquals("Germany", summary.get(4).homeTeam());
+    }
+
+        );
+    }
+
+    @Test
+    void finishingNonExistingGameThrowsException() {
+        Scoreboard scoreboard = new Scoreboard();
+
+        assertThrows(IllegalArgumentException.class, () ->
+                scoreboard.finishGame("Spain", "Brazil")
+        );
+    }
+
+    @Test
+    void startingDuplicateGameThrowsException() {
+        Scoreboard scoreboard = new Scoreboard();
+
+        scoreboard.startGame("Mexico", "Canada", 900);
+
+        assertThrows(IllegalArgumentException.class, () ->
+                scoreboard.startGame("Mexico", "Canada", 915)
+        );
     }
 }
