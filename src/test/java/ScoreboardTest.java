@@ -15,9 +15,11 @@ public class ScoreboardTest {
     @Test
     void startedGameAppearsInSummaryWithZeroScore() {
         Scoreboard scoreboard = new Scoreboard();
-        scoreboard.startGame("Mexico", "Canada", 900); // I assumed time to 900 as it started at 9:00 AM for easiness but a time producer can be injected.
+        scoreboard.startGame("Mexico", "Canada", 900); // I assumed time to 900 as it started at 9:00 AM (24-hour-clock) for easiness but a time producer can be injected.
         List<MatchSummary> summary = scoreboard.getSummary();
         assertEquals(1, summary.size());
+        assertEquals("Mexico", summary.get(0).homeTeam());
+        assertEquals("Canada", summary.get(0).awayTeam());
         assertEquals(0, summary.get(0).homeScore());
         assertEquals(0, summary.get(0).awayScore());
     }
