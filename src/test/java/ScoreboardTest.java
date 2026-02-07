@@ -72,4 +72,28 @@ public class ScoreboardTest {
         scoreboard.finishGame("Spain", "Brazil");
         assertTrue(scoreboard.getSummary().isEmpty());
     }
+
+    @Test
+    void testCompleteMatchSummary(){
+
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startGame("Mexico", "Canada", 900);
+        scoreboard.startGame("Spain", "Brazil", 915);
+        scoreboard.startGame("Germany", "France", 930);
+        scoreboard.startGame("Uruguay", "Italy", 945);
+        scoreboard.startGame("Argentina", "Australia", 950);
+
+        scoreboard.updateScore("Mexico", "Canada", 0, 5);
+        scoreboard.updateScore("Spain", "Brazil", 10, 2);
+        scoreboard.updateScore("Germany", "France", 2, 2);
+        scoreboard.updateScore("Uruguay", "Italy", 6, 6);
+        scoreboard.updateScore("Argentina", "Australia", 3, 1);
+
+        List<MatchSummary> summary = scoreboard.getSummary();
+        assertEquals("Uruguay", summary.get(0).homeTeam());
+        assertEquals("Spain", summary.get(1).homeTeam());
+        assertEquals("Mexico", summary.get(2).homeTeam());
+        assertEquals("Argentina", summary.get(3).homeTeam());
+        assertEquals("Germany", summary.get(4).homeTeam());
+    }
 }
