@@ -96,6 +96,12 @@ public class ScoreboardTest {
         assertEquals("Germany", summary.get(4).homeTeam());
     }
 
+    @Test
+    void updatingNonExistingGameThrowsException() {
+        Scoreboard scoreboard = new Scoreboard();
+
+        assertThrows(IllegalArgumentException.class, () ->
+                scoreboard.updateScore("Spain", "Brazil", 1, 1)
         );
     }
 
