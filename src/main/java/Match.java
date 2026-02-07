@@ -24,4 +24,10 @@ public class Match {
     public void setAwayTeamScore(int newScore){
         this.awayScore=newScore;
     }
+
+    public int getStartTime(){ return this.startTime;}
+
+    public int totalScore() {
+        return homeScore + awayScore;
+    }
 }

@@ -41,7 +41,7 @@ public class ScoreboardTest {
         scoreboard.startGame("Spain", "Brazil", 900);
         scoreboard.startGame("Mexico", "Canada", 915);
         scoreboard.updateScore("Spain", "Brazil", 4, 1);
-        scoreboard.updateScore("Mexico", "Canada", 8, 0);
+        scoreboard.updateScore("Mexico", "Canada", 3, 0);
 
         List<MatchSummary> summary = scoreboard.getSummary();
         assertEquals("Spain", summary.get(0).homeTeam());

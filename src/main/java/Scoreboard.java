@@ -8,12 +8,15 @@ public class Scoreboard {
         matches = new HashMap<>();
     }
     public List<MatchSummary> getSummary(){
+        List<Match> ordered = new ArrayList<>(matches.values());
+        ordered.sort((p1, p2)->Integer.compare(p2.totalScore(), p1.totalScore())); // sort by descending of total score
         List<MatchSummary> result = new ArrayList<>();
-        for (Match match : matches.values()) {
+        for (Match match : ordered) {
             result.add(match.toSummary());
         }
         return result;
     }
+
     public void startGame(String home, String away, int startTime) {
         matches.put(
                 key(home, away),
