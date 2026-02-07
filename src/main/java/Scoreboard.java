@@ -38,4 +38,8 @@ public class Scoreboard {
         existing.setAwayTeamScore(awayScore);
         matches.put(key, existing);
     }
+
+    public void finishGame(String home, String away) {
+        matches.remove(key(home, away));
+    }
 }
