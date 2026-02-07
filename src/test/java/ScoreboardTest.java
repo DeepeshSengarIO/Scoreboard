@@ -23,4 +23,14 @@ public class ScoreboardTest {
         assertEquals(0, summary.get(0).homeScore());
         assertEquals(0, summary.get(0).awayScore());
     }
+
+    @Test
+    void updatingScoreUpdatesSummary() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startGame("Spain", "Brazil", 900);
+        scoreboard.updateScore("Spain", "Brazil", 2, 1);
+        MatchSummary match = scoreboard.getSummary().get(0);
+        assertEquals(2, match.homeScore());
+        assertEquals(1, match.awayScore());
+    }
 }
