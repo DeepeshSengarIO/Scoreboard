@@ -33,4 +33,18 @@ public class ScoreboardTest {
         assertEquals(2, match.homeScore());
         assertEquals(1, match.awayScore());
     }
+
+    @Test
+    void summaryOrderedByTotalScoreDescending() {
+        Scoreboard scoreboard = new Scoreboard();
+
+        scoreboard.startGame("Spain", "Brazil", 900);
+        scoreboard.startGame("Mexico", "Canada", 915);
+        scoreboard.updateScore("Spain", "Brazil", 4, 1);
+        scoreboard.updateScore("Mexico", "Canada", 8, 0);
+
+        List<MatchSummary> summary = scoreboard.getSummary();
+        assertEquals("Spain", summary.get(0).homeTeam());
+        assertEquals("Mexico", summary.get(1).homeTeam());
+    }
 }
